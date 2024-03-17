@@ -11,7 +11,7 @@ const DesktopNavbar = () => {
         <a href='/certificates'>Certificate</a>
       </div>
       <div className='py-5 px-20 text-white'>
-        <a href='src/assets/ManikandanResume.pdf' type='application/pdf' download='Manikandan Resume' className='border-2 border-glow transform text-xl rounded-3xl px-3 py-2 transform scale-100 transition-transform duration-300 ease-in-out hover:scale-105' style={{ borderColor: '#FF4900' }}>Download Resume</a>
+        <a href='src/assets/ManikandanResume.pdf' type='pdf' download='Manikandan Resume' className='border-2 border-glow transform text-xl rounded-3xl px-3 py-2 transform scale-100 transition-transform duration-300 ease-in-out hover:scale-105' style={{ borderColor: '#FF4900' }}>Download Resume</a>
       </div>
     </nav>
   );
