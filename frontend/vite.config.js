@@ -1,16 +1,17 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
   server: {
     proxy: {
-      '/api': {
-        target: 'https://manikandan05-backend.vercel.app/',
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      },
+      '/api': 'https://manikandan05-backend.vercel.app/',
+      secure: false,
     },
   },
+  plugins: [react()],
+  build: {
+    outDir: './build',
+    emptyOutDir: false,
+}
 })
