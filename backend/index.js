@@ -7,7 +7,11 @@ const bcrypt = require('bcrypt');
 const app = express();
 const port = 5000;
 
-app.use(cors({ origin: ["https://manikandan05.vercel.app/"],methods:["POST","GET"],credentials:true }));
+app.use(cors({
+  origin: ["https://manikandan05.vercel.app/"],
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 app.use(bodyParser.json());
 const dburi = process.env.dbURI;
 mongoose.connect(dburi, {
