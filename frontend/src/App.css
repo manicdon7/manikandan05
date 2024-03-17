@@ -1,0 +1,19 @@
+.slider {
+  animation: slide 55s linear infinite;
+}
+
+.text-with-glow {
+  /* Add glow effect */
+  text-shadow: 0 0 10px #FF4900, /* Cyan glow */
+               0 0 20px #FF4900, /* Cyan glow */
+               0 0 30px #FF4900, /* Cyan glow */
+               0 0 40px #FF4900; /* Cyan glow */
+}
+
+.border-glow:hover {
+  box-shadow: 0 0 10px #FF4900, /* Cyan glow */
+              0 0 10px #FF4900, /* Cyan glow */
+              0 0 10px #FF4900, /* Cyan glow */
+              0 0 10px #FF4900; /* Cyan glow */
+  transition: box-shadow 0.3s ease; /* Smooth transition */
+}
