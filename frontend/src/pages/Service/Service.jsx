@@ -1,4 +1,5 @@
 import React from 'react'
+import CountUp from 'react-countup';
 import servicearrow from '../../assets/service-arrow.png';
 
 const Service = () => {
@@ -18,16 +19,16 @@ const Service = () => {
       </div>
         <section className='flex text-2xl gap-5 md:my-7 my-3 text-white'>
           <div>
-            <p className='font-extrabold text-4xl'>20+</p>
+            <p className='font-extrabold text-4xl'><CountUp end={6} duration={2} enableScrollSpy={true} />+</p>
             <p>Project Experience</p>
           </div>
           <div><h1></h1></div>
           <div>
-            <p className='font-extrabold text-4xl'>96%</p>
+            <p className='font-extrabold text-4xl'><CountUp end={80} duration={2} enableScrollSpy={true} />%</p>
             <p>User Satisfaction</p>
           </div>
           <div>
-            <p className='font-extrabold text-4xl'>4.7</p>
+            <p className='font-extrabold text-4xl'><CountUp end={4.7} decimal={2} duration={2} enableScrollSpy={true} /></p>
             <p>Feedback and responses</p>
           </div>
         </section>
