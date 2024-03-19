@@ -8,7 +8,7 @@ const Projects = () => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        fetch('https://manikandan05.vercel.app/projects')
+        fetch('https://manikandan05.vercel.app/api/projects')
             .then(response => response.json())
             .then(data => setProjects(data))
             .catch(error => console.error('Error fetching projects:', error));
