@@ -10,7 +10,7 @@ const About = () => {
 
     return (
         <div>
-            <h1 className="font-medium md:text-3xl text-3xl md:px-40 px-5 py-10 text-with-glow" style={{ color: '#FFFFFF' }} data-aos="zoom-out" data-aos-duration="1000">About Me _____</h1>
+            <h1 className="font-medium custom-font cherry-cream acme-regular md:text-3xl text-3xl md:px-40 px-5 py-10 text-with-glow" style={{ color: '#FFFFFF' }} data-aos="zoom-out" data-aos-duration="1000">About Me _____</h1>
             <div className='grid md:grid-cols-2 text-white'>
                 <div>
                     <div className='md:px-40 px-5 flex justify-center' data-aos="fade-right">

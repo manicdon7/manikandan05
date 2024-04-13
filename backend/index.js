@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const app = express();
 const port = 5000;
 
-app.use(cors({origin:'https://manikandan05.vercel.app'}));
+app.use(cors({origin:['https://manikandan05.vercel.app','http://localhost:5173']}));
 app.use(bodyParser.json());
 const dburi = process.env.dbURI;
 mongoose.connect(dburi, {
@@ -27,6 +27,13 @@ const certificateSchema = new mongoose.Schema({
   imageUrl: String
 });
 const Certificate = mongoose.model('Certificate', certificateSchema);
+
+const testimonialSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  imageUrl: String
+});
+const Testimonial = mongoose.model('Testimonials', testimonialSchema);
 
 
 const projectSchema = new mongoose.Schema({
@@ -137,6 +144,32 @@ app.get('/api/certificates', async (req, res) => {
   } catch (error) {
     console.error('Error fetching certificates:', error);
     res.status(500).send('Internal server error.');
+  }
+});
+
+app.post('/api/uploadtestimonials', async (req, res) => {
+  try {
+    const { title, description, imageUrl } = req.body;
+    const testimonial = new Testimonial({
+      title,
+      description,
+      imageUrl,
+    });
+    await testimonial.save();
+    res.status(201).send('Testimonial uploaded successfully.');
+  } catch (error) {
+    console.error('Error uploading testimonial:', error);
+    res.status(500).send('Internal server error.');
+  }
+});
+
+app.get('/api/testimonials', async (req, res) => {
+  try {
+    const testimonial = await Testimonial.find();
+    res.json(testimonial);
+  } catch (error) {
+    console.error('Error fetching testimonials:', error);
+    res.status(500).send('Internal server testimonials.');
   }
 });
 

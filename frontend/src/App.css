@@ -1,6 +1,26 @@
 .slider {
   animation: slide 55s linear infinite;
 }
+.custom-font {
+  font-family: "Hammersmith One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.acme-regular {
+  font-family: "Acme", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.cherry-cream soda-regular {
+  font-family: "Cherry Cream Soda", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 .text-with-glow {
   /* Add glow effect */
@@ -17,3 +37,4 @@
               0 0 10px #FF4900; /* Cyan glow */
   transition: box-shadow 0.3s ease; /* Smooth transition */
 }
+

@@ -50,7 +50,7 @@ const Home = () => {
         </div>
         <div>
           <div>
-            <h1 className='text-2xl md:text-5xl text-white font-bold flex justify-center pt-10 md:pt-40'>FullStack Developer</h1>
+            <h1 className='text-2xl md:text-5xl text-white font-bold flex justify-center py-5 md:pt-40'>FullStack Developer</h1>
           </div>
           <div>
             <h1 className='text-center py-2 px-5 md:px-40 text-white text-xl'>Experienced full stack developer with a passion for creating web applications. Specializing in front-end design, back-end development, and database management. Freelancer committed to delivering high-quality, customized solutions for clients worldwide.</h1>

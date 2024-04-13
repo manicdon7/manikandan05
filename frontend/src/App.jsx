@@ -6,6 +6,7 @@ import UploadProject from './pages/Admin/Uploadproject';
 import Admin from './pages/Admin/Admin';
 import Auth from './pages/Admin/Auth';
 import Certificates from './pages/Certificates/Certificates';
+import UploadTestimonials from './pages/Admin/UploadTestimonials';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/admin' element={isLoggedIn === 'true'? <Admin />:<Auth />} />
           <Route path='/admin/uploadcertificate' element={isLoggedIn === 'true'? <UploadCertificate />:<Auth />} />
           <Route path='/admin/uploadproject' element={isLoggedIn === 'true'? <UploadProject />:<Auth />} />
+          <Route path='/admin/uploadtestimonials' element={isLoggedIn === 'true'? <UploadTestimonials />:<Auth />} />
       </Routes>
     </Router>
   );

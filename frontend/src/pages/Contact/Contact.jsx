@@ -1,27 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import servicearrow from '../../assets/service-arrow.png';
 import twittericon from '../../assets/twittericon.png';
 import linkedin from '../../assets/linkedinicon.png';
 import facebookicon from '../../assets/facebookicon.png';
 import instaicon from '../../assets/instaicon.png';
 import githubicon from '../../assets/githubicon.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "image") {
-      const file = files[0];
-      setHost((prevState) => ({
-        ...prevState,
-        [name]: file,
-      }));
-    } else {
-      setHost((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    }
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('service_vu9dzr8', 'template_tmp0x2k', e.target,'l6rbabXEYkrhk3WSb')
+      .then((result) => {
+        toast.success('Email sent successfully:', result.text);
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        toast.error('Error sending email:', error.text);
+      });
   };
 
 
@@ -56,24 +72,35 @@ const Contact = () => {
         </section>
         <section>
           <div className='md:my-10 my-2'>
-            <div className=''>
-              <h1 className='text-xl md:text-3xl font-medium text-white'>Name</h1>
-              <input type="text" className="block md:py-2.5 py-1 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-yellow-400 focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder-gray-200" onChange={handleChange} />
-            </div>
-            <div className='mt-10'>
-              <h1 className='text-xl md:text-3xl font-medium text-white'>Email</h1>
-              <input type="email" className="block md:py-2.5 py-1 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-yellow-400 focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder-gray-200" onChange={handleChange} />
-            </div>
-            <div className='mt-10'>
-              <h1 className='text-xl md:text-3xl font-medium text-white'>Message</h1>
-              <input type="text" className="block md:py-2.5 py-1 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-yellow-400 focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder-gray-200" onChange={handleChange} />
-            </div>
-            <div className='md:py-5 py-3 px-10 md:px-20 text-white mt-5'>
-              <button className='border-2 text-xl rounded-3xl px-10 py-2 transform scale-100 transition-transform duration-300 ease-in-out hover:scale-105 border-glow' style={{ borderColor: '#FF4900'}}>Send</button>
-            </div>
+            <form onSubmit={handleSubmit} className='md:my-10 my-2'>
+              <div className=''>
+                <h1 className='text-xl md:text-3xl font-medium text-white'>Name</h1>
+                <input type="text" name="name" value={formData.name} className="block md:py-2.5 py-1 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-yellow-400 focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder-gray-200" onChange={handleChange} />
+              </div>
+              <div className='mt-10'>
+                <h1 className='text-xl md:text-3xl font-medium text-white'>Email</h1>
+                <input type="email" name="email" value={formData.email} className="block md:py-2.5 py-1 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-yellow-400 focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder-gray-200" onChange={handleChange} />
+              </div>
+              <div className='mt-10'>
+                <h1 className='text-xl md:text-3xl font-medium text-white'>Message</h1>
+                <input type="text" name="message" value={formData.message} className="block md:py-2.5 py-1 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-yellow-400 focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder-gray-200" onChange={handleChange} />
+              </div>
+              <div className='md:py-5 py-3 px-10 md:px-20 text-white mt-5'>
+                <button type="submit" className='border-2 text-xl rounded-3xl px-10 py-2 transform scale-100 transition-transform duration-300 ease-in-out hover:scale-105 border-glow' style={{ borderColor: '#FF4900' }}>Send</button>
+              </div>
+            </form>
           </div>
         </section>
       </div>
+      <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    theme="colored" />
     </div>
   )
 }
