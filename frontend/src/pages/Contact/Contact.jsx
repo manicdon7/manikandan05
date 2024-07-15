@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import servicearrow from '../../assets/service-arrow.png';
 import twittericon from '../../assets/twittericon.png';
 import linkedin from '../../assets/linkedinicon.png';
@@ -7,9 +7,9 @@ import instaicon from '../../assets/instaicon.png';
 import githubicon from '../../assets/githubicon.png';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,9 +26,16 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_vu9dzr8', 'template_tmp0x2k', e.target,'l6rbabXEYkrhk3WSb')
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message
+    };
+
+    emailjs.send('service_vu9dzr8', 'template_tmp0x2k', templateParams, 'l6rbabXEYkrhk3WSb')
       .then((result) => {
-        toast.success('Email sent successfully:', result.text);
+        toast.success('Email sent successfully', result.text);
         setFormData({
           name: '',
           email: '',
@@ -39,7 +46,6 @@ const Contact = () => {
         toast.error('Error sending email:', error.text);
       });
   };
-
 
   return (
     <div className='#contact'>
@@ -93,16 +99,17 @@ const Contact = () => {
         </section>
       </div>
       <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    theme="colored" />
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        theme="colored"
+      />
     </div>
   )
 }
 
-export default Contact
+export default Contact;

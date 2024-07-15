@@ -19,7 +19,7 @@ const Service = () => {
       </div>
         <section className='flex text-2xl gap-5 md:my-7 my-3 text-white'>
           <div>
-            <p className='font-extrabold text-4xl'><CountUp end={6} duration={2} enableScrollSpy={true} />+</p>
+            <p className='font-extrabold text-4xl'><CountUp end={8} duration={2} enableScrollSpy={true} />+</p>
             <p>Project Experience</p>
           </div>
           <div><h1></h1></div>

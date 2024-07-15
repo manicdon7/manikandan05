@@ -2,6 +2,8 @@ import React from 'react'
 import arrow from '../assets/arrow.png';
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
         <div className='md:mt-10 mt-5 shadow-xl'>
             <div style={{ backgroundColor: '#303030' }} className='grid md:grid-cols-3 grid-cols-1 md:px-20 px-4 py-10'>
@@ -29,10 +31,13 @@ const Footer = () => {
                         <p className='text-gray-300 md:mx-5 mx-4 md:text-2xl text-xl text-left my-5'>Let's connect and embark on a journey to turn your vision into reality.</p>
                     </div>
                     <div className='flex space-x-2'>
-                        <a href='mailto:manikandan05082003@gmail.com' className='text-xl md:text-2xl mx-5 my-3' style={{ color: '#FF4900' }}>manikandan05082003@gmail.com</a>
+                        <a href='mailto:manikandan05082003@gmail.com' className='text-xl md:text-2xl md:mx-5 my-3' style={{ color: '#FF4900' }}>manikandan05082003@gmail.com</a>
                         <img src={arrow} className='h-10 w-10 pt-4 md:pt-4' alt='arrow' />
                     </div>
                 </div>
+            </div>
+            <div className='py-4 text-center text-gray-400' style={{ backgroundColor: '#242424' }}>
+                &copy; {currentYear} Manikandan. All rights reserved.
             </div>
         </div>
     )
