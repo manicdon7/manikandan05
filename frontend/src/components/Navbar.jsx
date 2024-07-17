@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import logo from '../assets/logo-no-background.png'
 
 const DesktopNavbar = () => {
   return (
     <nav className='flex justify-between top-0 z-50 fixed w-full backdrop-filter backdrop-blur-lg shadow-2xl bg-opacity-20' style={{ backgroundColor: '#242424' }}>
+      <div className='p-4'>
+        <img src={logo} alt='logo' className='h-10' onContextMenu={(e) => e.preventDefault()} />
+      </div>
       <div className='md:flex md:gap-10 md:px-20 md:py-5 text-2xl text-white'>
         <a href='/' className=''>Home</a>
         <a href='#service'>Service</a>
@@ -34,9 +38,9 @@ const MobileNavbar = () => {
   }, [isDrawerOpen]);
 
   return (
-    <nav className='flex justify-between items-center top-0 z-50 fixed w-full'>
-      <div className='px-4 py-2 text-2xl text-white'>
-        Mani Kandan
+    <nav className='flex justify-between items-center top-0 z-50 fixed w-full pt-3' style={{ backgroundColor: '#242424' }}>
+      <div className='px-4 py-2 text-2xl w-40 text-white'>
+        <img src={logo} alt='logo' onContextMenu={(e) => e.preventDefault()}/>
       </div>
       <button className="md:hidden block mx-3 z-50" onClick={toggleDrawer}>
         {isDrawerOpen ? (
