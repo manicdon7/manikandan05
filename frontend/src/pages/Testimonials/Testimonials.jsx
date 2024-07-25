@@ -42,7 +42,7 @@ const Testimonials = () => {
                             </div>
                             <div>
                                 <img src={testimonial.imageUrl} alt="profile" className='h-16 rounded-full' />
-                                <h1 className='text-xl text-white'>{testimonial.author}</h1>
+                                <h1 className='text-xl text-white'>{testimonial.title}</h1>
                             </div>
                             <div>
                                 <img src={testright} alt="right" className='h-10' />

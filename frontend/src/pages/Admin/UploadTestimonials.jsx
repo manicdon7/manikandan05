@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { FaUpload, FaEdit, FaInfoCircle } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyALER6J04enZVziVENWW1bOn7lhJs3uiII",
     authDomain: "portfolio-cc0d2.firebaseapp.com",
@@ -15,11 +19,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-const UploadCertificate = () => {
+const UploadTestimonials = () => {
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [uploading, setUploading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -28,10 +34,12 @@ const UploadCertificate = () => {
 
     const handleUpload = async () => {
         try {
+            setError('');
             if (!image || !title || !description) {
-                console.error("All fields are required");
-                return;
+                throw new Error("All fields are required");
             }
+
+            setUploading(true);
 
             const storageRef = ref(storage, `Testimonials/${image.name}`);
             await uploadBytes(storageRef, image);
@@ -39,7 +47,7 @@ const UploadCertificate = () => {
             setImageUrl(url);
 
             // Send data to backend
-            await fetch('https://manikandan05-backend.vercel.app/api/uploadtestimonials', {
+            const response = await fetch('https://manikandan05-backend.vercel.app/api/uploadtestimonials', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,24 +59,76 @@ const UploadCertificate = () => {
                 }),
             });
 
-            console.log("Image uploaded and data sent to backend successfully.");
+            if (!response.ok) {
+                throw new Error('Failed to upload data to server');
+            }
+
+            toast.success("Image uploaded and data sent to backend successfully.");
         } catch (error) {
-            console.error("Error:", error);
+            console.error("Error:", error.message);
+            setError(error.message);
+            toast.error(`Error: ${error.message}`);
+        } finally {
+            setUploading(false);
         }
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-xl">
-            <h2 className="text-2xl font-bold mb-4">Upload Image</h2>
-            <input type="file" onChange={handleFileChange} className="mb-4" />
-            <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} className="block w-full border border-gray-300 rounded-md px-4 py-2 mt-4" />
-            <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} className="block w-full border border-gray-300 rounded-md px-4 py-2 mt-4" />
-            <button onClick={handleUpload} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded">
-                Upload Image    
-            </button>
-            {imageUrl && <img src={imageUrl} alt="Uploaded Certificate" className="mt-4 rounded-lg" />}
+        <div className="max-w-lg mx-auto mt-10 p-6 bg-gray-800 rounded-lg shadow-xl">
+            <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+                <FaUpload className="mr-2 text-blue-500" />
+                Upload Testimonials
+            </h2>
+            <div className="space-y-4">
+                <div className="flex items-center border border-gray-600 rounded-lg p-2 bg-gray-700">
+                    <input
+                        type="file"
+                        onChange={handleFileChange}
+                        className="bg-transparent text-white file:bg-blue-600 file:hover:bg-blue-700 file:focus:outline-none file:rounded-md file:py-2 file:px-4 file:text-white"
+                    />
+                </div>
+                <div className="flex items-center border border-gray-600 rounded-lg p-2 bg-gray-700">
+                    <FaEdit className="text-gray-400 mr-3" />
+                    <input
+                        type="text"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="bg-transparent text-white placeholder-gray-400 w-full focus:outline-none"
+                    />
+                </div>
+                <div className="flex items-center border border-gray-600 rounded-lg p-2 bg-gray-700">
+                    <FaInfoCircle className="text-gray-400 mr-3" />
+                    <textarea
+                        placeholder="Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="bg-transparent text-white placeholder-gray-400 w-full focus:outline-none resize-none"
+                        rows="4"
+                    />
+                </div>
+                <button
+                    onClick={handleUpload}
+                    disabled={uploading}
+                    className={`bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg mt-4 ${uploading ? 'cursor-not-allowed opacity-50' : ''}`}
+                >
+                    {uploading ? 'Uploading...' : 'Upload'}
+                </button>
+                {error && <p className="text-red-400 mt-2">{error}</p>}
+                {imageUrl && <img src={imageUrl} alt="Uploaded Testimonials" className="mt-4 rounded-lg shadow-md w-full" />}
+            </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                theme="colored"
+            />
         </div>
     );
 };
 
-export default UploadCertificate;
+export default UploadTestimonials;

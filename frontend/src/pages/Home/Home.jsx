@@ -53,7 +53,7 @@ const Home = () => {
             <h1 className='text-2xl md:text-5xl text-white font-bold flex justify-center py-5 md:pt-40 font-sans'>FullStack Developer</h1>
           </div>
           <div>
-            <h1 className='text-center py-2 px-5 md:px-40 text-white text-xl font-sans'>Experienced full stack developer with a passion for creating web applications. Specializing in front-end design, back-end development, and database management. Freelancer committed to delivering high-quality, customized solutions for clients worldwide.</h1>
+            <h1 className='text-left py-2 px-5 md:px-40 text-white text-xl font-sans'>Experienced full stack developer with a passion for creating web applications. Specializing in front-end design, back-end development, and database management. Freelancer committed to delivering high-quality, customized solutions for clients worldwide.</h1>
           </div>
           <div className='py-5 flex justify-center text-white'>
             <a href='#projects' className='shadow-2xl md:text-xl text-lg rounded-3xl p-4 transform scale-100 transition-transform duration-300 ease-in-out hover:scale-105 border-glow border'>View My Works</a>

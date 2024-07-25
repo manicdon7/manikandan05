@@ -17,12 +17,11 @@ const Service = () => {
       <div className='mt-10'>
         <h1 className='text-left text-xl font-light text-white'>I’m a full-stack developer offers end-to-end web development solutions, adept in both front-end and back-end technologies. I design user interfaces, create server-side logic, manage databases, and ensure seamless integration across the entire application stack.</h1>
       </div>
-        <section className='flex text-2xl gap-5 md:my-7 my-3 text-white'>
+        <section className='grid md:grid-cols-3 grid-cols-2 text-2xl gap-5 md:my-7 my-3 text-white'>
           <div>
             <p className='font-extrabold text-4xl'><CountUp end={8} duration={2} enableScrollSpy={true} />+</p>
             <p>Project Experience</p>
           </div>
-          <div><h1></h1></div>
           <div>
             <p className='font-extrabold text-4xl'><CountUp end={80} duration={2} enableScrollSpy={true} />%</p>
             <p>User Satisfaction</p>

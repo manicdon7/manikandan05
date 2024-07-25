@@ -12,25 +12,63 @@ const Admin = () => {
   };
 
   return (
-    <div className="mx-auto">
-      <div className="flex justify-between"  style={{backgroundColor:'#FF4900'}}>
-        <h2 className="text-3xl font-semibold mb-4 pt-4 px-3">Dashboard</h2>
-      <button 
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold mx-4 my-5 px-4 py-2 rounded-lg shadow-md"
-          onClick={handleLogout}
+    <div className="min-h-screen bg-gray-100">
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-orange-400 to-red-500 py-4 shadow-lg">
+        <div className="container mx-auto flex justify-between items-center px-4">
+          <h2 className="text-3xl font-bold text-black">Dashboard</h2>
+          <button 
+            className="bg-white hover:bg-gray-200 text-orange-600 font-semibold px-4 py-2 rounded-lg shadow-md transition-colors duration-300"
+            onClick={handleLogout}
           >
-          Logout
-        </button>
+            Logout
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto p-6 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8 mt-8">
+        <Link 
+          to="/admin/uploadproject" 
+          className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+        >
+          <div className="p-6 flex flex-col items-center">
+            <div className="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800">Upload Project</h3>
+            <p className="text-gray-600 mt-2">Add new projects to showcase in your portfolio.</p>
           </div>
-      <div className="grid grid-cols-1 mx-5 my-10 md:grid-cols-6 md:mx-2 gap-6">
-        <Link to="/admin/uploadproject" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-4 rounded-lg shadow-md block text-center">
-          Upload Project
         </Link>
-        <Link to="/admin/uploadcertificate" className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-4 rounded-lg shadow-md block text-center">
-          Upload Certificate
+        <Link 
+          to="/admin/uploadcertificate" 
+          className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+        >
+          <div className="p-6 flex flex-col items-center">
+            <div className="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3l2 1"></path>
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800">Upload Certificate</h3>
+            <p className="text-gray-600 mt-2">Manage your certificates and add new ones.</p>
+          </div>
         </Link>
-        <Link to="/admin/uploadtestimonials" className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-4 rounded-lg shadow-md block text-center">
-          Upload Testimonials
+        <Link 
+          to="/admin/uploadtestimonials" 
+          className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+        >
+          <div className="p-6 flex flex-col items-center">
+            <div className="bg-red-500 text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-3-3v6"></path>
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800">Upload Testimonials</h3>
+            <p className="text-gray-600 mt-2">Add and manage testimonials from your clients.</p>
+          </div>
         </Link>
       </div>
     </div>

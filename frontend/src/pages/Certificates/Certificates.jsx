@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '../../components/Navbar';
+import Navbar2 from '../../components/Navbar2';
 
 const Certificates = () => {
   const currentYear = new Date().getFullYear();
@@ -32,8 +32,8 @@ const Certificates = () => {
   return (
     <div className="container mx-auto pt-10" style={{ backgroundColor: '#242424' }}>
       <div className='h-full min-h-screen'>
-        <NavBar />
-        <h2 className="text-3xl font-bold text-center my-8 text-white" style={{ color: "#FF4900" }}>Certificates</h2>
+        <Navbar2 />
+        <h2 className="text-3xl font-bold text-center my-12 text-white" style={{ color: "#FF4900" }}>Certificates</h2>
         {loading ? (
           <p className="text-center text-white">Loading...</p>
         ) : (

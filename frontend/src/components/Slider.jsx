@@ -7,7 +7,7 @@ import shine from '../assets/shine.png';
 const Slider = () => {
   return (
     <div>
-        <Marquee className='overflow-x-hidden' style={{zIndex:0}}>
+        <Marquee direction='right' className='overflow-x-hidden' style={{zIndex:0}}>
             <div className='flex space-x-10 border-2 p-2 border-gray-200'>
                 <div className='flex space-x-3'>
                     <img src={star} alt='star' className='h-10'/>
