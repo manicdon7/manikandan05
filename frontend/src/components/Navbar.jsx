@@ -76,11 +76,8 @@ const Navbar = () => {
   return (
     <div>
       <div className='hidden md:block'>
-        {/* Show Desktop Navbar for screens larger than or equal to medium (md) */}
         <DesktopNavbar />
       </div>
-
-      {/* Show Mobile Navbar for screens smaller than medium (md) */}
       <div className='md:hidden block'>
         <MobileNavbar />
       </div>

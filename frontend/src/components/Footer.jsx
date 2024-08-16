@@ -16,11 +16,11 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='text-white grid grid-rows-5 md:mx-40 mx-4 gap-3 md:py-10 py-2'>
-                    <a href="#Home" className='text-xl mx-10' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Home</a>
-                    <a href="#about" className='text-xl mx-10' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>About</a>
-                    <a href="#service" className='text-xl mx-10' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Service</a>
-                    <a href="#projects" className='text-xl mx-10' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Projects</a>
-                    <a href="#contact" className='text-xl mx-10' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Contact</a>
+                    <a href="#Home" className='text-xl mx-0' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Home</a>
+                    <a href="#about" className='text-xl mx-0' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>About</a>
+                    <a href="#service" className='text-xl mx-0' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Service</a>
+                    <a href="#projects" className='text-xl mx-0' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Projects</a>
+                    <a href="#contact" className='text-xl mx-0' style={{ color: '#FFFFFF', transition: 'color 0.5s' }}>Contact</a>
                 </div>
 
                 <div>
@@ -30,8 +30,8 @@ const Footer = () => {
                     <div>
                         <p className='text-gray-300 md:mx-5 mx-4 md:text-2xl text-xl text-left my-5'>Let's connect and embark on a journey to turn your vision into reality.</p>
                     </div>
-                    <div className='flex space-x-2'>
-                        <a href='mailto:manikandan05082003@gmail.com' className='text-xl md:text-2xl md:mx-5 my-3' style={{ color: '#FF4900' }}>manikandan05082003@gmail.com</a>
+                    <div className='flex space-x-0'>
+                        <a href='mailto:manikandan05082003@gmail.com' className='text-xl md:text-2xl md:mx-5 mx-5 my-3' style={{ color: '#FF4900' }}>manikandan05082003@gmail.com</a>
                         <img src={arrow} className='h-10 w-10 pt-4 md:pt-4' alt='arrow' />
                     </div>
                 </div>
