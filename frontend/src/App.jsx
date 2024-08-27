@@ -17,7 +17,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/certificates' element={<Certificates />} />
         <Route path='/auth' element={isLoggedIn === 'true'? <Admin />:<Auth />} />
-          <Route path='/admin' element={isLoggedIn === 'true'? <Admin />:<Auth />} />
+          <Route path='/admin' element={isLoggedIn === 'true'? <Admin />:<Auth/>} />
           <Route path='/admin/uploadcertificate' element={isLoggedIn === 'true'? <UploadCertificate />:<Auth />} />
           <Route path='/admin/uploadproject' element={isLoggedIn === 'true'? <UploadProject />:<Auth />} />
           <Route path='/admin/uploadtestimonials' element={isLoggedIn === 'true'? <UploadTestimonials />:<Auth />} />
