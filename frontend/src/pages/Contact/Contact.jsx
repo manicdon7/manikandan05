@@ -67,7 +67,7 @@ const Contact = () => {
     },
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/mani-kandan-1b0846248/',
+      url: 'https://www.linkedin.com/in/manikandan-r-1b0846248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       icon: linkedin,
       color: 'hover:bg-blue-600'
     },
