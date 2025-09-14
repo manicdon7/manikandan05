@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import UploadCertificate from './pages/Admin/UploadCertificate';
 import UploadProject from './pages/Admin/Uploadproject';
+import UploadTimeline from './pages/Admin/UploadTimeline';
 import Admin from './pages/Admin/Admin';
 import Auth from './pages/Admin/Auth';
 import Certificates from './pages/Certificates/Certificates';
 import UploadTestimonials from './pages/Admin/UploadTestimonials';
+import './index.css';
 
 function App() {
 
@@ -21,6 +23,7 @@ function App() {
           <Route path='/admin/uploadcertificate' element={isLoggedIn === 'true'? <UploadCertificate />:<Auth />} />
           <Route path='/admin/uploadproject' element={isLoggedIn === 'true'? <UploadProject />:<Auth />} />
           <Route path='/admin/uploadtestimonials' element={isLoggedIn === 'true'? <UploadTestimonials />:<Auth />} />
+          <Route path='/admin/uploadtimeline' element={isLoggedIn === 'true'? <UploadTimeline />:<Auth />} />
       </Routes>
     </Router>
   );

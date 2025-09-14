@@ -2,13 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require("dotenv").config();
-const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const app = express();
-const port = 5000;
+const port = 5001;
 
 app.use(cors({origin:['https://manikandan05.vercel.app','http://localhost:5173']}));
-app.use(bodyParser.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 const dburi = process.env.dbURI;
 mongoose.connect(dburi, {
   useNewUrlParser: true,
@@ -35,6 +35,17 @@ const testimonialSchema = new mongoose.Schema({
 });
 const Testimonial = mongoose.model('Testimonials', testimonialSchema);
 
+const timelineSchema = new mongoose.Schema({
+  year: String,
+  title: String,
+  company: String,
+  description: String,
+  skills: [String],
+  type: { type: String, enum: ['work', 'education'], default: 'work' },
+  createdAt: { type: Date, default: Date.now }
+});
+const Timeline = mongoose.model('Timeline', timelineSchema);
+
 
 const projectSchema = new mongoose.Schema({
   title: String,
@@ -42,6 +53,8 @@ const projectSchema = new mongoose.Schema({
   githubLink: String,
   imageUrl: String,
   deployment: String,
+  techStack: [String], // Array of technologies used
+  createdAt: { type: Date, default: Date.now }
 });
 const Project = mongoose.model('Project', projectSchema);
 
@@ -98,30 +111,31 @@ app.post('/api/login', async (req, res) => {
 
 app.post('/api/upload', async (req, res) => {
   try {
-    const { title, description, githubLink, imageUrl, deployment } = req.body;
+    const { title, description, githubLink, imageUrl, deployment, techStack } = req.body;
     const project = new Project({
       title,
       description,
       githubLink,
       imageUrl,
-      deployment
+      deployment,
+      techStack: techStack || []
     });
 
     await project.save();
-    res.status(201).send('Project uploaded successfully.');
+    res.status(201).json({ message: 'Project uploaded successfully.', project });
   } catch (error) {
     console.error('Error uploading project:', error);
-    res.status(500).send('Internal server error.');
+    res.status(500).json({ message: 'Internal server error.' });
   }
 });
 
 app.get('/api/projects', async (req, res) => {
   try {
-    const projects = await Project.find();
+    const projects = await Project.find().sort({ createdAt: -1 }); // Sort by newest first
     res.json(projects);
   } catch (error) {
     console.error('Error fetching projects:', error);
-    res.status(500).send('Internal server error.');
+    res.status(500).json({ message: 'Internal server error.' });
   }
 });
 
@@ -174,6 +188,74 @@ app.get('/api/testimonials', async (req, res) => {
   } catch (error) {
     console.error('Error fetching testimonials:', error);
     res.status(500).send('Internal server testimonials.');
+  }
+});
+
+// Timeline CRUD operations
+app.post('/api/timeline', async (req, res) => {
+  try {
+    const { year, title, company, description, skills, type } = req.body;
+    const timeline = new Timeline({
+      year,
+      title,
+      company,
+      description,
+      skills: skills || [],
+      type: type || 'work'
+    });
+    await timeline.save();
+    res.status(201).json({ message: 'Timeline entry created successfully.', timeline });
+  } catch (error) {
+    console.error('Error creating timeline entry:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+});
+
+app.get('/api/timeline', async (req, res) => {
+  try {
+    const timeline = await Timeline.find().sort({ year: -1 }); // Sort by year descending
+    res.json(timeline);
+  } catch (error) {
+    console.error('Error fetching timeline:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+});
+
+app.put('/api/timeline/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { year, title, company, description, skills, type } = req.body;
+    
+    const updatedTimeline = await Timeline.findByIdAndUpdate(
+      id,
+      { year, title, company, description, skills, type },
+      { new: true, runValidators: true }
+    );
+    
+    if (!updatedTimeline) {
+      return res.status(404).json({ message: 'Timeline entry not found.' });
+    }
+    
+    res.json({ message: 'Timeline entry updated successfully.', timeline: updatedTimeline });
+  } catch (error) {
+    console.error('Error updating timeline entry:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+});
+
+app.delete('/api/timeline/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedTimeline = await Timeline.findByIdAndDelete(id);
+    
+    if (!deletedTimeline) {
+      return res.status(404).json({ message: 'Timeline entry not found.' });
+    }
+    
+    res.json({ message: 'Timeline entry deleted successfully.' });
+  } catch (error) {
+    console.error('Error deleting timeline entry:', error);
+    res.status(500).json({ message: 'Internal server error.' });
   }
 });
 
