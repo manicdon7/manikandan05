@@ -35,7 +35,7 @@ This isn't just another portfolio website - it's my personal corner of the inter
 
 ```bash
 # Clone this beauty
-git clone <your-repo-url>
+git clone https://github.com/manicdon7/manikandan05
 
 # Frontend setup
 cd frontend
