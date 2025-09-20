@@ -134,13 +134,19 @@ const UploadTimeline = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900">
       <Navbar2 />
       <div className="container mx-auto px-4 py-24">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-12 gradient-text">
-            Manage Timeline
-          </h1>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+              Timeline Management
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Manage your professional journey and career milestones
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full mt-6"></div>
+          </div>
 
           {/* Form */}
           <div className="glass-card p-8 mb-12">

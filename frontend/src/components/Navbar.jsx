@@ -12,19 +12,19 @@ const DesktopNavbar = () => {
           Home
           <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300'></span>
         </a>
-        <a href='#about' className='hover:text-orange-400 transition-colors duration-300 relative group'>
+        <a href='/#about' className='hover:text-orange-400 transition-colors duration-300 relative group'>
           About
           <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300'></span>
         </a>
-        <a href='#service' className='hover:text-orange-400 transition-colors duration-300 relative group'>
+        <a href='/#service' className='hover:text-orange-400 transition-colors duration-300 relative group'>
           Services
           <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300'></span>
         </a>
-        <a href='#projects' className='hover:text-orange-400 transition-colors duration-300 relative group'>
+        <a href='/#projects' className='hover:text-orange-400 transition-colors duration-300 relative group'>
           Projects
           <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300'></span>
         </a>
-        <a href='#contact' className='hover:text-orange-400 transition-colors duration-300 relative group'>
+        <a href='/#contact' className='hover:text-orange-400 transition-colors duration-300 relative group'>
           Contact
           <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300'></span>
         </a>
@@ -59,10 +59,10 @@ const MobileNavbar = () => {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#service", label: "Services" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#about", label: "About" },
+    { href: "/#service", label: "Services" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/#contact", label: "Contact" },
     { href: "/certificates", label: "Certificates" },
   ];
 
