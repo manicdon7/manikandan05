@@ -39,6 +39,7 @@ const Auth = () => {
         localStorage.setItem('authenticated', 'true');
         setTimeout(() => {
           navigate('/admin');
+          window.location.reload();
         }, 1500);
       } else {
         toast.error(data.message || 'Authentication failed. Please check your credentials.');
