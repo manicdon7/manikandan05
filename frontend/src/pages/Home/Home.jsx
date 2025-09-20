@@ -80,7 +80,7 @@ const Home = () => {
                 data-aos="fade-left"
                 data-aos-delay="400"
               >
-                Software Enginner
+                Software Engineer
               </h2>
 
               <p
