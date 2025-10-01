@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo-no-background.png';
+import logo from '../assets/software_engineer_logo-removebg.png';
 
 const Navbar2 = () => {
   return (

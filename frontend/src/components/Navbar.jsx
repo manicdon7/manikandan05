@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../assets/logo-no-background.png'
+import logo from '../assets/software_engineer_logo-removebg.png'
 
 const DesktopNavbar = () => {
   return (
