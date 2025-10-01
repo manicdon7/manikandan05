@@ -1,6 +1,6 @@
 # Hey there! 👋 I'm Manikandan
 
-Welcome to my digital playground! This is where I showcase my journey as a full-stack developer who loves turning coffee into code and ideas into reality.
+Welcome to my digital playground! This is where I showcase my journey as a developer who loves turning coffee into code and ideas into reality.
 
 ## What's This All About? 🤔
 
